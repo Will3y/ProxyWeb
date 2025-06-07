@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Proxy Web</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; }
+        .container { text-align: center; padding: 2rem; background-color: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        input[type="text"] { width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; border: none; background-color: #007bff; color: white; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Proxy Web</h1>
+        <p>Entrez l'URL du site que vous souhaitez visiter.</p>
+        <form id="proxy-form">
+            <input type="text" id="url" name="url" placeholder="https://exemple.com" required>
+            <button type="submit">Accéder</button>
+        </form>
+    </div>
+
+    <script>
+        // Ce script redirige l'utilisateur vers la route du proxy
+        document.getElementById('proxy-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const url = document.getElementById('url').value;
+            // On encode l'URL pour la passer en paramètre de manière sécurisée
+            window.location.href = `/proxy?url=${encodeURIComponent(url)}`;
+        });
+    </script>
+</body>
+</html>
